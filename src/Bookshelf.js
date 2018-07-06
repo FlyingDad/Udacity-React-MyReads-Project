@@ -8,11 +8,16 @@ class Bookshelf extends Component {
             <h2 className="bookshelf-title">Currently Reading</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-                <li>
-                  <Book />
-                </li>
-                <li>
-                  <div className="book">
+								{this.props.books.map(book => {
+									if(this.props.shelfType === book.bookshelf)
+									return (
+										<li>
+											<Book key={book.title} book={book}/>
+										</li>
+									)
+								})}
+
+                {/* <div className="book">
                     <div className="book-top">
                       <div
                         className="book-cover"
@@ -39,8 +44,8 @@ class Bookshelf extends Component {
                     </div>
                     <div className="book-title">Ender's Game</div>
                     <div className="book-authors">Orson Scott Card</div>
-                  </div>
-                </li>
+                  </div> */}
+                
               </ol>
             </div>
           </div>
