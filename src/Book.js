@@ -1,26 +1,34 @@
 import React, { Component } from "react";
-
-function averageRating(book){
-	//console.log(book.hasOwnProperty('averageRating'))
-	if(book.hasOwnProperty('averageRating')){
-		return (			
-		<div>
-			{book.averageRating}
-		</div>
-		)
-	} else {
-		return (
-			<div>
-			No ratings
-		</div>
-		)
-	}
-}
+import MDstar from 'react-icons/lib/md/star'
+import MDstarHalf from 'react-icons/lib/md/star-half'
 
 class Book extends Component {
+	
+	// Build up JSX star icons for the rating, 
+	// using react-icons from Material Design
+	averageRating(book){
+		if(book.hasOwnProperty('averageRating')){
+			let stars=[]
+			for(let i= 0; i < Math.floor(book.averageRating); i++){
+				stars.push(<span key={i} className="star-rating"><MDstar /></span>)					
+			}
+			if(book.averageRating % 1){
+				stars.push(<span key={6} className="star-rating"><MDstarHalf /></span>)
+			}
+			return (			
+				stars
+			)
+		} else {
+			return (
+				<div className="no-ratings">
+				No ratings
+			</div>
+			)
+		}
+	}
   render() {
-		console.log(this.props.book)
-		console.log(this.props.book.averageRating)
+		//console.log(this.props.book)
+		//console.log(this.props.book.averageRating)
     return (
       <div className="book">
         <div className="book-top">
@@ -46,7 +54,7 @@ class Book extends Component {
         </div>
         <div className="book-title">{this.props.book.title}</div>
         <div className="book-authors">{this.props.book.authors[0]}</div>
-				{averageRating(this.props.book)}
+				{this.averageRating(this.props.book)}
       </div>
     );
   }

@@ -60,7 +60,7 @@ class BooksApp extends React.Component {
           </div>
         )}
       </div>
-    )}else{return(<div></div>)}
+    )}else{return(<div className="no-ratings"></div>)}
   }
 }
 
