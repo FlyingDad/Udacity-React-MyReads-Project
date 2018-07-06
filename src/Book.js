@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 
+function averageRating(book){
+	//console.log(book.hasOwnProperty('averageRating'))
+	if(book.hasOwnProperty('averageRating')){
+		return (			
+		<div>
+			{book.averageRating}
+		</div>
+		)
+	} else {
+		return (
+			<div>
+			No ratings
+		</div>
+		)
+	}
+}
+
 class Book extends Component {
   render() {
+		console.log(this.props.book)
+		console.log(this.props.book.averageRating)
     return (
       <div className="book">
         <div className="book-top">
@@ -10,7 +29,7 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: this.props.book.coverUrl
+              backgroundImage: 'url(' + this.props.book.imageLinks.thumbnail +')'
             }}
           />
           <div className="book-shelf-changer">
@@ -26,7 +45,8 @@ class Book extends Component {
           </div>
         </div>
         <div className="book-title">{this.props.book.title}</div>
-        <div className="book-authors">{this.props.book.author}</div>
+        <div className="book-authors">{this.props.book.authors[0]}</div>
+				{averageRating(this.props.book)}
       </div>
     );
   }

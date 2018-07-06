@@ -6,7 +6,8 @@ class Bookcase extends Component {
     return (
       <div className="list-books-content">
         <div>
-          <Bookshelf books={this.props.books} shelfType="reading" shelfName="Currently Reading"/>
+					{/* {console.log(this.props)} */}
+          <Bookshelf books={this.props.books} shelfType="currentlyReading" shelfName="Currently Reading"/>
 					<Bookshelf books={this.props.books} shelfType="wantToRead" shelfName="Want to Read"/>
 					<Bookshelf books={this.props.books} shelfType="read" shelfName="Read"/>
         </div>
