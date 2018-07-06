@@ -1,0 +1,8 @@
+{this.props.books.map(book => {
+              if (this.props.shelfType === book.bookshelf) 
+                return (
+                  <li key={book.title}>
+                    <Book book={book} />
+                  </li>
+								)
+            })}
