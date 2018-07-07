@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
 		showSearchPage: false,
-		//books: []
+		books: []
 	}
 	
 	componentDidMount(){
@@ -24,7 +24,7 @@ class BooksApp extends React.Component {
 	}
 
   render() {
-		if(this.state.books){
+		//console.log('app rendering', this.state.books)
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -60,7 +60,7 @@ class BooksApp extends React.Component {
           </div>
         )}
       </div>
-    )}else{return(<div className="no-ratings"></div>)}
+    )
   }
 }
 

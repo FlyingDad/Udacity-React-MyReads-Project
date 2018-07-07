@@ -5,21 +5,22 @@ class Bookshelf extends Component {
   state = {
     filteredBooks: []
   };
-
-  componentDidMount() {
-    this.filteredBooks(this.props);
-  }
+	
+	componentWillReceiveProps(nextprops) {
+		this.filteredBooks(nextprops.books)
+	}
 
   filteredBooks(props) {
-		//console.log(props)
-    let books = this.props.books.filter(book => {
+		//console.log('filtering',props)
+    let books = props.books.filter(book => {
+			//console.log(book)
       return book.shelf === this.props.shelfType;
     });
     this.setState({ filteredBooks: books });
   }
 
   render() {
-		//console.log(this.state.filteredBooks)
+		//console.log('shlef render', this.state.filteredBooks)
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.shelfName}</h2>
