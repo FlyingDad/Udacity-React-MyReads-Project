@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Book from "./Book";
 
 class Bookshelf extends Component {
@@ -11,16 +12,14 @@ class Bookshelf extends Component {
 	}
 
   filteredBooks(props) {
-		//console.log('filtering',props)
+	
     let books = props.books.filter(book => {
-			//console.log(book)
       return book.shelf === this.props.shelfType;
     });
     this.setState({ filteredBooks: books });
   }
 
   render() {
-		//console.log('shlef render', this.state.filteredBooks)
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.shelfName}</h2>
@@ -38,6 +37,12 @@ class Bookshelf extends Component {
       </div>
     );
   }
+}
+
+Bookshelf.propTypes = {
+	book: PropTypes.object,
+	shelfType: PropTypes.string.isRequired,
+	shelfName: PropTypes.string.isRequired
 }
 
 export default Bookshelf;
