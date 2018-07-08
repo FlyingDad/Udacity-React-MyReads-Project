@@ -19,7 +19,7 @@ class Book extends Component {
               backgroundImage: 'url(' + this.props.book.imageLinks.thumbnail +')'
             }}
           />
-        <MoveSelect />  
+        <MoveSelect bookshelf={this.props.bookshelf}/>  
         </div>
         <div className="book-title">{this.props.book.title}</div>
         <div className="book-authors">{this.props.book.authors[0]}</div>

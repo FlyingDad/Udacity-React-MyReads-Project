@@ -28,7 +28,7 @@ class Bookshelf extends Component {
             {this.state.filteredBooks.map(book => {
               return (
                 <li key={book.title}>
-                  <Book book={book} />
+                  <Book book={book} bookshelf={this.props.shelfType}/>
                 </li>
               );
             })}
