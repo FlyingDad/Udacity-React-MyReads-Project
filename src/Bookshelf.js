@@ -28,7 +28,7 @@ class Bookshelf extends Component {
             {this.state.filteredBooks.map(book => {
               return (
                 <li key={book.title}>
-                  <Book book={book} bookshelf={this.props.shelfType}/>
+                  <Book book={book} bookshelf={this.props.shelfType} onBookshelfChange={this.props.onBookshelfChange}/>
                 </li>
               );
             })}
@@ -42,7 +42,8 @@ class Bookshelf extends Component {
 Bookshelf.propTypes = {
 	book: PropTypes.object,
 	shelfType: PropTypes.string.isRequired,
-	shelfName: PropTypes.string.isRequired
+	shelfName: PropTypes.string.isRequired,
+	onBookshelfChange: PropTypes.func.isRequired
 }
 
 export default Bookshelf;

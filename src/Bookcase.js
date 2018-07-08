@@ -16,9 +16,9 @@ componentWillReceiveProps(nextProps) {
     return (
       <div className="list-books-content">
         <div>
-          <Bookshelf books={this.state.books} shelfType="currentlyReading" shelfName="Currently Reading"/>
-					<Bookshelf books={this.state.books} shelfType="wantToRead" shelfName="Want to Read"/>
-					<Bookshelf books={this.state.books} shelfType="read" shelfName="Read"/>
+          <Bookshelf books={this.state.books} shelfType="currentlyReading" shelfName="Currently Reading" onBookshelfChange={this.props.onBookshelfChange}/>
+					<Bookshelf books={this.state.books} shelfType="wantToRead" shelfName="Want to Read" onBookshelfChange={this.props.onBookshelfChange}/>
+					<Bookshelf books={this.state.books} shelfType="read" shelfName="Read" onBookshelfChange={this.props.onBookshelfChange}/>
         </div>
       </div>
     );
@@ -26,7 +26,8 @@ componentWillReceiveProps(nextProps) {
 }
 
 Bookcase.propTypes = {
-	books: PropTypes.array
+	books: PropTypes.array,
+	onBookshelfChange: PropTypes.func.isRequired
 }
 
 export default Bookcase;

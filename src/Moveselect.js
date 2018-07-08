@@ -11,16 +11,18 @@ class MoveSelect extends Component {
 		this.setState({bookshelf: this.props.bookshelf})
 	}
 
-	onChangeSelection(evt) {
+	onMoveBook(evt) {
 		if(evt.target.value){
 			this.setState({bookshelf: evt.target.value})
+			//this.props.onBookshelfChange(evt.target.value)
+			this.props.onMoveBook(evt.target.value)
 		}
 	}
 
 	render() {
 		return (
 			<div className="book-shelf-changer">
-            <select onChange={this.onChangeSelection.bind(this)}>
+            <select onChange={this.onMoveBook.bind(this)}>
               <option value="move" disabled>
                 Move to...
               </option>
@@ -36,7 +38,9 @@ class MoveSelect extends Component {
 
 
 MoveSelect.propTypes = {
-	bookshelf: PropTypes.string.isRequired
+	bookshelf: PropTypes.string.isRequired,
+	//onBookshelfChange: PropTypes.func.isRequired,
+	onMoveBook: PropTypes.func.isRequired
 }
 
 export default MoveSelect

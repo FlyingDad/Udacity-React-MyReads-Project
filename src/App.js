@@ -16,15 +16,21 @@ class BooksApp extends React.Component {
 	}
 	
 	componentDidMount(){
+		this.getBooks()
+	}
+
+	getBooks(){
 		BooksAPI.getAll().then(response => {
-			//console.log(response[0])
 			this.setState({books: response})
-		}
-		)
+			//console.log(response)
+		})
+	}
+
+	moveBookHandler(value) {
+		this.getBooks()
 	}
 
   render() {
-		//console.log('app rendering', this.state.books)
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -53,7 +59,7 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>						
-							<Bookcase books={this.state.books}/>						
+							<Bookcase books={this.state.books} onBookshelfChange={this.moveBookHandler.bind(this)}/>						
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
