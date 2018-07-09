@@ -6,14 +6,28 @@ import Stars from "./Stars"
 
 class Book extends Component {
 
-	// state={
-	// 	book: this.props.book
-	// }
+	state={
+		title: 'Title not provided',
+		author: 'No author provided',
+		imageUrl: '',
+		averageRating: 0
+	}
 
 	//componentWillReceiveProps(nextProps) {
 		//console.log(nextProps)
 		//this.setState({book: nextProps})
 	//}
+
+	componentDidMount(){
+		this.validateBookData()
+	}
+
+	validateBookData() {
+		if(this.props.book.title) this.setState({title: this.props.book.title})
+		if(this.props.book.authors) this.setState({author: this.props.book.authors[0]})
+		if(this.props.book.imageLinks) this.setState({imageUrl: this.props.book.imageLinks.thumbnail})
+		if(this.props.book.averageRating) this.setState({averageRating: this.props.book.averageRating})
+	}
 	
 	onMoveBook(value) {
 		//console.log("book move", value);
@@ -32,7 +46,7 @@ class Book extends Component {
   }
 
   render() {
-    //console.log(this.props.book.averageRating)
+    //console.log(this.props.book)
     return (
       <div className="book">
         <div className="book-top">
@@ -42,7 +56,7 @@ class Book extends Component {
               width: 128,
               height: 193,
               backgroundImage:
-                "url(" + this.props.book.imageLinks.thumbnail + ")"
+                "url(" + this.state.imageUrl + ")"
             }}
           />
           <MoveSelect
@@ -51,9 +65,9 @@ class Book extends Component {
             onBookshelfChange={this.props.onBookshelfChange}
           />
         </div>
-        <div className="book-title">{this.props.book.title}</div>
-        <div className="book-authors">{this.props.book.authors[0]}</div>
-        <Stars rating={this.props.book.averageRating} />
+        <div className="book-title">{this.state.title}</div>
+        <div className="book-authors">{this.state.author}</div>
+        <Stars rating={this.state.averageRating} />
       </div>
     );
   }

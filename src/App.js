@@ -2,6 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Bookcase from './Bookcase'
+import Search from './Search'
 
 class BooksApp extends React.Component {
   state = {
@@ -30,30 +31,20 @@ class BooksApp extends React.Component {
 		this.getBooks()
 	}
 
+	onCloseSearch(){
+		this.setState({showSearchPage: false})
+		// This is the only way I could get the bookcase to re-render
+		// If I don't do this the bookcase renders with no books because the state didn't change
+		this.setState({books: []})	
+		this.getBooks()
+	}
+
   render() {
+		console.log('app-books', this.state.books)
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
-              <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author"/>
-
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
+          <Search onCancelSearch={this.onCloseSearch.bind(this)}/>
         ) : (
           <div className="list-books">
             <div className="list-books-title">

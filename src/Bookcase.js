@@ -8,9 +8,10 @@ class Bookcase extends Component {
 		books: []
 	}
 
-componentWillReceiveProps(nextProps) {
-	this.setState({books: nextProps})
-}
+	componentWillReceiveProps(nextProps) {
+		this.setState({books: nextProps})
+		console.log('nextprops', nextProps)
+	}
 
   render() {
     return (

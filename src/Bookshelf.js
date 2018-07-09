@@ -27,7 +27,7 @@ class Bookshelf extends Component {
           <ol className="books-grid">
             {this.state.filteredBooks.map(book => {
               return (
-                <li key={book.title}>
+                <li key={book.id}>
                   <Book book={book} bookshelf={this.props.shelfType} onBookshelfChange={this.props.onBookshelfChange}/>
                 </li>
               );
@@ -40,7 +40,7 @@ class Bookshelf extends Component {
 }
 
 Bookshelf.propTypes = {
-	book: PropTypes.object,
+	nextprops: PropTypes.object,
 	shelfType: PropTypes.string.isRequired,
 	shelfName: PropTypes.string.isRequired,
 	onBookshelfChange: PropTypes.func.isRequired
