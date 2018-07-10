@@ -4,7 +4,7 @@ import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import Bookcase from "./Bookcase";
 import Search from "./Search";
-import Error404 from './Error404'
+//import Error404 from './Error404'
 
 class BooksApp extends React.Component {
   state = {
@@ -74,12 +74,6 @@ class BooksApp extends React.Component {
             </div>
           )}
         />
-				<Route
-					path='*'
-					render={() => (
-						<Error404/>
-					)}
-				/>
       </div>
     );
   }
