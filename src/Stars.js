@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import React, { Component } from "react"
+import PropTypes from 'prop-types'
 import MDstar from 'react-icons/lib/md/star'
 import MDstarHalf from 'react-icons/lib/md/star-half'
 

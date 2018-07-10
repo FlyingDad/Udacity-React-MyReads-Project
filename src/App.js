@@ -1,8 +1,10 @@
 import React from "react";
+import { Route, Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import Bookcase from "./Bookcase";
 import Search from "./Search";
+import Error404 from './Error404'
 
 class BooksApp extends React.Component {
   state = {
@@ -12,7 +14,6 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
     books: []
   };
 
@@ -40,28 +41,45 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    //console.log("app-books", this.state.books);
+    //console.log('app-books', this.state.books)
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <Search onCancelSearch={this.onCloseSearch.bind(this)} myBooks={this.state.books}/>
-        ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <Bookcase
-              books={this.state.books}
-							onBookshelfChange={this.moveBookHandler.bind(this)}
-							currentBooks={this.state.books}
+        <Route
+					exact
+          path="/search"
+          render={() => (
+            <Search
+              onCancelSearch={this.onCloseSearch.bind(this)}
+              myBooks={this.state.books}
             />
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>
-                Add a book
-              </a>
+          )}
+        />
+
+        <Route
+					exact
+          path="/"
+          render={() => (
+            <div className="list-books">
+              <div className="list-books-title">
+                <h1>MyReads</h1>
+              </div>
+              <Bookcase
+                books={this.state.books}
+                onBookshelfChange={this.moveBookHandler.bind(this)}
+                currentBooks={this.state.books}
+              />
+              <div className="open-search">
+                <Link to="/search">Add a book</Link>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        />
+				<Route
+					path='*'
+					render={() => (
+						<Error404/>
+					)}
+				/>
       </div>
     );
   }
