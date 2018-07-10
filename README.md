@@ -1,41 +1,46 @@
-# MyReads Project
+# Front End Web Developer Nanodegree Course MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This React.js App is a Bookcase that displays your books of interest. The bookcase has three shelves: Currently Reading, Want to Read, and Read. Each book has a selction that allows you to move books to different shelves, or delete them from your inventory.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+---
+## Table of Contents
 
-## TL;DR
+* [Requirements](#requirements)
+* [Dependencies](#dependencies)
+* [Directions](#directions)
+* [BookAPI](#Backend-Server)
+* [Contributing](#contributing)
 
-To get started developing right away:
+## Requirements
+Browser capable of running ECMAScript 6 (ES6)
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+## Dependencies  
+- [Google Roboto Font](https://fonts.googleapis.com/css?family=Roboto:400,700")
+- React Documentation: [React: Getting Started](https://reactjs.org/docs/getting-started.html)
+- [Node Package Manager (NPM)](https://www.npmjs.com/)
+- This repository uses a provided [BookAPI](#BookAPI-Backend-Server) backend server.  
 
-## What You're Getting
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+## Directions
 
-## Backend Server
+1. On the command line, navigate to the project root folder and 'npm install'
+
+2. You will need a local server running in order to run the app.
+
+3. Open js/dbhelper.js and change line 12 to your local server port number.
+
+4. If your IDE does not support live server, then you can run a local server by perfroming the following:
+
+   - In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
+
+   - With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
+   - Explore the provided code, and start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
+   - Write code to implement the updates to get this site on its way to being a mobile-ready website.
+
+5. On the command line, navigate to the projects root folder and 'npm start'
+
+
+## BookAPI-Backend-Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
@@ -87,6 +92,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+To get started...
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+#### Step 1
+
+- *Option 1*
+    - 🍴 Fork this repo!
+
+- *Option 2*
+    - 👯 Clone this repo to your local machine using `https://github.com/FlyingDad/Udacity-React-MyReads-Project.git`
+
+#### Step 2
+
+- *HACK AWAY!* 🔨🔨🔨
+
+#### Step 3
+
+- 🔃 Create a new pull request using <a href="https://github.com/FlyingDad/Udacity-React-MyReads-Project" target="_blank">`https://github.com/FlyingDad/Udacity-React-MyReads-Project`</a>.
