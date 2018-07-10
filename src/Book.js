@@ -10,7 +10,8 @@ class Book extends Component {
 		title: 'Title not provided',
 		author: 'No author provided',
 		imageUrl: '',
-		averageRating: 0
+		averageRating: 0,
+		searching: false,
 	}
 
 	//componentWillReceiveProps(nextProps) {

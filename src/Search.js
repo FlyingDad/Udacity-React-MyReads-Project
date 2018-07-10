@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 //import PropTypes from "prop-types"
@@ -27,7 +28,11 @@ class Search extends Component {
 
   clearQuery = () => {
     this.setState({results: []});
-  };
+	}
+	
+	onMoveBook(){
+		this.props.onCancelSearch()
+	}
 
   render() {
     return (
@@ -58,7 +63,7 @@ class Search extends Component {
 								//console.log('results',this.state.results)
 								return (
 								<li key={book.id}>
-									<Book bookshelf='none' book={book}/>
+									<Book bookshelf='none' book={book} onBookshelfChange={this.onMoveBook.bind(this)}/>
 								</li>
 							)})):(
             <li>No results</li>
@@ -68,6 +73,10 @@ class Search extends Component {
       </div>
     );
   }
+}
+
+Search.propTypes = {
+	onCancelSearch: PropTypes.func.isRequired
 }
 
 
