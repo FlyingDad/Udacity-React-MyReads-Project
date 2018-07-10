@@ -40,7 +40,6 @@ class MoveSelect extends Component {
 
 MoveSelect.propTypes = {
 	bookshelf: PropTypes.string.isRequired,
-	//onBookshelfChange: PropTypes.func.isRequired,
 	onMoveBook: PropTypes.func.isRequired
 }
 

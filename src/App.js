@@ -1,8 +1,8 @@
-import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
-import Bookcase from './Bookcase'
-import Search from './Search'
+import React from "react";
+import * as BooksAPI from "./BooksAPI";
+import "./App.css";
+import Bookcase from "./Bookcase";
+import Search from "./Search";
 
 class BooksApp extends React.Component {
   state = {
@@ -12,53 +12,59 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-		showSearchPage: false,
-		books: []
-	}
-	
-	componentDidMount(){
-		this.getBooks()
-	}
+    showSearchPage: false,
+    books: []
+  };
 
-	getBooks(){
-		BooksAPI.getAll().then(response => {
-			this.setState({books: response})
-			//console.log(response)
-		})
-	}
+  componentDidMount() {
+    this.getBooks();
+  }
 
-	moveBookHandler(value) {
-		this.getBooks()
-	}
+  getBooks() {
+    BooksAPI.getAll().then(response => {
+      this.setState({ books: response });
+      //console.log(response)
+    });
+  }
 
-	onCloseSearch(){
-		this.setState({showSearchPage: false})
-		// This is the only way I could get the bookcase to re-render
-		// If I don't do this the bookcase renders with no books because the state didn't change
-		this.setState({books: []})	
-		this.getBooks()
-	}
+  moveBookHandler(value) {
+    this.getBooks();
+  }
+
+  onCloseSearch() {
+    this.setState({ showSearchPage: false });
+    // This is the only way I could get the bookcase to re-render
+    // If I don't do this the bookcase renders with no books because the state didn't change
+    this.setState({ books: [] });
+    this.getBooks();
+  }
 
   render() {
-		console.log('app-books', this.state.books)
+    //console.log("app-books", this.state.books);
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search onCancelSearch={this.onCloseSearch.bind(this)}/>
+          <Search onCancelSearch={this.onCloseSearch.bind(this)} myBooks={this.state.books}/>
         ) : (
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
-            </div>						
-							<Bookcase books={this.state.books} onBookshelfChange={this.moveBookHandler.bind(this)}/>						
+            </div>
+            <Bookcase
+              books={this.state.books}
+							onBookshelfChange={this.moveBookHandler.bind(this)}
+							currentBooks={this.state.books}
+            />
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <a onClick={() => this.setState({ showSearchPage: true })}>
+                Add a book
+              </a>
             </div>
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default BooksApp
+export default BooksApp;

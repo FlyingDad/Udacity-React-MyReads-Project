@@ -10,7 +10,7 @@ class Bookcase extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({books: nextProps})
-		console.log('nextprops', nextProps)
+		//console.log('nextprops', nextProps)
 	}
 
   render() {

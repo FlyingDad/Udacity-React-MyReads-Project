@@ -10,20 +10,30 @@ class Search extends Component {
   };
 
   updateQuery = (query) => {
-		///console.log(query)
+		//If there is a query, search the API then compare to mybooks
 		if(query){
 		BooksAPI.search(query).then(response => {
-			//console.log(response.error)
 			if(!response.error){
-				this.setState({results: response})
+				this.compareToMybooks(response)
 			} else {
-				//console.log("error response")
 				this.clearQuery()
 			}
 		})} else {
-			//console.log('clearing q')
 			this.clearQuery()
 		}
+	}
+
+	// Check search results against myBooks so we can set the correct select value
+	// if match, we swap our book into the results to current selection is correct
+	compareToMybooks(response){
+		response.forEach(book => {
+			this.props.myBooks.forEach(myBook => {
+				if(book.id === myBook.id){
+					book.shelf = myBook.shelf
+				}
+			})
+		})
+		this.setState({results: response})
 	}
 
   clearQuery = () => {
@@ -31,7 +41,7 @@ class Search extends Component {
 	}
 	
 	onMoveBook(){
-		this.props.onCancelSearch()
+		
 	}
 
   render() {
@@ -63,7 +73,7 @@ class Search extends Component {
 								//console.log('results',this.state.results)
 								return (
 								<li key={book.id}>
-									<Book bookshelf='none' book={book} onBookshelfChange={this.onMoveBook.bind(this)}/>
+									<Book bookshelf={book.shelf?book.shelf:'none'} book={book} onBookshelfChange={this.onMoveBook.bind(this)}/>
 								</li>
 							)})):(
             <li>No results</li>
@@ -76,7 +86,8 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-	onCancelSearch: PropTypes.func.isRequired
+	onCancelSearch: PropTypes.func.isRequired,
+	myBooks: PropTypes.array.isRequired
 }
 
 
