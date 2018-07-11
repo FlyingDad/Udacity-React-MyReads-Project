@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MDstar from 'react-icons/lib/md/star'
 import MDstarHalf from 'react-icons/lib/md/star-half'
@@ -11,19 +11,19 @@ class Stars extends Component {
 		if(rating){
 			let stars=[]
 			for(let i= 0; i < Math.floor(rating); i++){
-				stars.push(<span key={i} className="star-rating"><MDstar /></span>)					
+				stars.push(<span key={i} className='star-rating'><MDstar /></span>)					
 			}
 			if(rating % 1){
-				stars.push(<span key={6} className="star-rating"><MDstarHalf /></span>)
+				stars.push(<span key={6} className='star-rating'><MDstarHalf /></span>)
 			}
 			return (			
 				stars
 			)
 		} else {
 			return (
-				<div className="no-ratings">
+				<div className='no-ratings'>
 				No ratings
-			</div>
+				</div>
 			)
 		}
 	}
@@ -36,7 +36,7 @@ class Stars extends Component {
 }
 
 Stars.propTypes = {
-		rating: PropTypes.number
+	rating: PropTypes.number
 }
 
 export default Stars

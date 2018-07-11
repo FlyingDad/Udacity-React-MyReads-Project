@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Book from "./Book";
+import Book from './Book';
 
 class Bookshelf extends Component {
   state = {
@@ -21,10 +21,10 @@ class Bookshelf extends Component {
 
   render() {
     return (
-      <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.shelfName}</h2>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
+      <div className='bookshelf'>
+        <h2 className='bookshelf-title'>{this.props.shelfName}</h2>
+        <div className='bookshelf-books'>
+          <ol className='books-grid'>
             {this.state.filteredBooks.map(book => {
               return (
                 <li key={book.id}>

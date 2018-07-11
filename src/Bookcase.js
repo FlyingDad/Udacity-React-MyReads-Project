@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import Bookshelf from "./Bookshelf";
+import Bookshelf from './Bookshelf';
 
 class Bookcase extends Component {
 
@@ -10,16 +10,15 @@ class Bookcase extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({books: nextProps})
-		//console.log('nextprops', nextProps)
 	}
 
   render() {
     return (
-      <div className="list-books-content">
+      <div className='list-books-content'>
         <div>
-          <Bookshelf books={this.state.books} shelfType="currentlyReading" shelfName="Currently Reading" onBookshelfChange={this.props.onBookshelfChange}/>
-					<Bookshelf books={this.state.books} shelfType="wantToRead" shelfName="Want to Read" onBookshelfChange={this.props.onBookshelfChange}/>
-					<Bookshelf books={this.state.books} shelfType="read" shelfName="Read" onBookshelfChange={this.props.onBookshelfChange}/>
+          <Bookshelf books={this.state.books} shelfType='currentlyReading' shelfName='Currently Reading' onBookshelfChange={this.props.onBookshelfChange}/>
+					<Bookshelf books={this.state.books} shelfType='wantToRead' shelfName='Want to Read' onBookshelfChange={this.props.onBookshelfChange}/>
+					<Bookshelf books={this.state.books} shelfType='read' shelfName='Read' onBookshelfChange={this.props.onBookshelfChange}/>
         </div>
       </div>
     );

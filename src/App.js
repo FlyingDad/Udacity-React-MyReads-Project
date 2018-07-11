@@ -19,12 +19,15 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     this.getBooks();
-  }
+	}
+	
+	componentDidUpdate() {
+		this.getBooks()
+	}
 
   getBooks() {
     BooksAPI.getAll().then(response => {
       this.setState({ books: response });
-      //console.log(response)
     });
   }
 
@@ -33,7 +36,6 @@ class BooksApp extends React.Component {
   }
 
   onCloseSearch() {
-    this.setState({ showSearchPage: false });
     // This is the only way I could get the bookcase to re-render
     // If I don't do this the bookcase renders with no books because the state didn't change
     this.setState({ books: [] });
@@ -41,7 +43,6 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    //console.log('app-books', this.state.books)
     return (
       <div className="app">
         <Route
